@@ -1,4 +1,4 @@
-package timer;
+package com.gcusky.timer;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

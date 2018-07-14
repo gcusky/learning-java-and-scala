@@ -1,4 +1,4 @@
-package timer.example;
+package com.gcusky.timer.example;
 
 import java.util.Timer;
 import java.util.TimerTask;

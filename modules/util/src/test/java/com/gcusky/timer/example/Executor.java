@@ -1,4 +1,4 @@
-package timer.example;
+package com.gcusky.timer.example;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
