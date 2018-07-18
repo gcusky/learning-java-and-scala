@@ -16,18 +16,22 @@ public class DifferenceTestWithCycle {
         Calendar calendar = Calendar.getInstance();
         System.out.println("Current time is: " + sf.format(calendar.getTime()));
         Timer timer = new Timer();
-        timer.schedule(new TimerTask() { // timer.scheduleAtFixedRate
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                // 打印当前的计划执行时间
-                System.out.println("Scheduled exec time is: " + sf.format(scheduledExecutionTime()));
-                System.out.println("Task is being executed!");
-            }
-        }, calendar.getTime(), 2000);
+        timer.schedule(
+                new TimerTask() { // timer.scheduleAtFixedRate
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        // 打印当前的计划执行时间
+                        System.out.println(
+                                "Scheduled exec time is: " + sf.format(scheduledExecutionTime()));
+                        System.out.println("Task is being executed!");
+                    }
+                },
+                calendar.getTime(),
+                2000);
     }
 }

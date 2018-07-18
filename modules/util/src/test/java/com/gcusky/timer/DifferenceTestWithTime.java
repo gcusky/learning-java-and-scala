@@ -19,13 +19,17 @@ public class DifferenceTestWithTime {
         calendar.add(Calendar.SECOND, -6);
         Timer timer = new Timer();
         // 第一次执行时间为6秒前，之后每隔两秒钟执行一次
-        timer.schedule(new TimerTask() { // timer.scheduleAtFixedRate
-            @Override
-            public void run() {
-                // 打印当前的计划执行时间
-                System.out.println("Scheduled exec time is: " + sf.format(scheduledExecutionTime()));
-                System.out.println("Task is being executed!");
-            }
-        }, calendar.getTime(), 2000);
+        timer.schedule(
+                new TimerTask() { // timer.scheduleAtFixedRate
+                    @Override
+                    public void run() {
+                        // 打印当前的计划执行时间
+                        System.out.println(
+                                "Scheduled exec time is: " + sf.format(scheduledExecutionTime()));
+                        System.out.println("Task is being executed!");
+                    }
+                },
+                calendar.getTime(),
+                2000);
     }
 }

@@ -18,7 +18,7 @@ public class MyTimerTask extends TimerTask {
 
     @Override
     public void run() {
-        if(count < 3) {
+        if (count < 3) {
             // 以 yyyy-MM-dd HH:mm:ss 的格式打印当前执行时间
             Calendar calendar = Calendar.getInstance();
             SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

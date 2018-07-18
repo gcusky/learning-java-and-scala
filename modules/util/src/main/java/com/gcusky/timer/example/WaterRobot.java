@@ -19,9 +19,9 @@ public class WaterRobot extends TimerTask {
     @Override
     public void run() {
         // 灌水直接至桶满为止
-        if(bucketCapacity < 5){
+        if (bucketCapacity < 5) {
             System.out.println("Add 1L water into the bucket!");
-            bucketCapacity ++;
+            bucketCapacity++;
         } else {
             // 水满之后就停止执行
 

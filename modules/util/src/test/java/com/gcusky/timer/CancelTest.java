@@ -26,14 +26,13 @@ public class CancelTest {
         Date cancelTime = new Date();
         System.out.println("cancel time is: " + sf.format(cancelTime));
 
-        //-----------------cancel()----------------//
+        // -----------------cancel()----------------//
         // 取消所有任务
-        //timer.cancel();
-        //System.out.println("Tasks all canceled!");
+        // timer.cancel();
+        // System.out.println("Tasks all canceled!");
 
-        //-----------------purge()-----------------//
+        // -----------------purge()-----------------//
         task2.cancel();
         System.out.println("current canceled task number is: " + timer.purge());
-
     }
 }
