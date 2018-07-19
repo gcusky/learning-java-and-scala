@@ -9,7 +9,7 @@ import java.util.Date;
  * quartz会自动根据getter/setter方法匹配
  * Created by lizhy on 2018/7/13.
  */
-public class HelloJob2 implements Job {
+public class HelloJob1 implements Job {
     private String message;
     private Float floatJobValue;
     private Double doubleTriggerValue;
@@ -48,12 +48,16 @@ public class HelloJob2 implements Job {
         // 编写具体的业务逻辑
         // System.out.println("Hello World!");
         JobKey key = context.getJobDetail().getKey();
-        System.out.println("Job name -> key: " + key.getName() + "-> " + key.getGroup());
+        System.out.println("Job [name -> key]: " + key.getName() + "-> " + key.getGroup());
         TriggerKey trKey = context.getTrigger().getKey();
-        System.out.println("Trigger name -> key: " + trKey.getName() + "-> " + trKey.getGroup());
+        System.out.println("Trigger [name -> key]: " + trKey.getName() + "-> " + trKey.getGroup());
         // JobDataMap dataMap = context.getMergedJobDataMap(); // 相同 key 的情况下 trigger 会覆盖 job
         System.out.println("msg is: " + message);
         System.out.println("JobFloatValue is: " + floatJobValue);
         System.out.println("TriggerDoubleValue is: " + doubleTriggerValue);
+
+        Trigger currentTrigger = context.getTrigger();
+        System.out.println("Start Time Is: "+ sf.format(currentTrigger.getStartTime()));
+        System.out.println("End Time Is: "+ sf.format(currentTrigger.getEndTime()));
     }
 }
