@@ -1,11 +1,17 @@
 package com.gcusky.random
 
+import java.util.concurrent.ThreadLocalRandom
+
 import scala.util.Random
 
 /**
   * Created by lizhy on 2018/8/3.
   */
 object Randoms {
+
+  val random: ThreadLocalRandom = ThreadLocalRandom.current()
+
+  implicit def toRandom(obj: Randoms.type): Random = Random.javaRandomToRandom(random)
 
   /**
     * 根据权重随机一个元素
@@ -16,7 +22,8 @@ object Randoms {
     * @tparam E          元素类型
     * @return
     */
-  def randomOne[E](elements: Iterable[E], totalWeight: Option[Int] = None, canIndex: Boolean = false)(weigher: E => Int): Option[E] = {
+  def randomOneWithWeight[E](elements: Iterable[E], totalWeight: Option[Int] = None, canIndex: Boolean = false)(
+      weigher: E => Int): Option[E] = {
     if (elements.isEmpty) return None
     val total = totalWeight.getOrElse(elements.map(weigher).sum)
     if (total > 0) {
@@ -56,5 +63,30 @@ object Randoms {
       assert(one != null)
       one
     }
+  }
+
+  /**
+    * 随机一个元素
+    * @param elements 所有元素
+    * @tparam E       元素类型
+    * @return
+    */
+  def randomOne[E](elements: Iterable[E]): Option[E] = elements match {
+    case list if list.isEmpty => None
+    case one :: Nil           => Some(one)
+    case seq                  => Some(seq.toList(Random.nextInt(seq.size)))
+  }
+
+  /**
+    * 随机一个元素
+    * @param elements 所有元素
+    * @tparam E       元素类型
+    * @throws         IllegalArgumentException if <code>elements</code> is empty
+    * @return
+    */
+  @throws[IllegalArgumentException]("if elements is empty")
+  def randomOneNotEmpty[E](elements: Iterable[E]): E = {
+    if (elements.isEmpty) throw new IllegalArgumentException("elements is empty")
+    randomOne(elements).get
   }
 }

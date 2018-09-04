@@ -62,7 +62,7 @@ class RandomTest extends FunSuite {
   case class TestWeight(value: String, weight: Int) { def getWeight: Int = weight }
 
   test("random one") {
-    val one = randomOne(testMap)(_.getWeight)
+    val one = randomOneWithWeight(testMap)(_.getWeight)
     print(one)
     assert(one.isDefined, "has one")
   }

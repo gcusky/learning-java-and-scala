@@ -16,6 +16,7 @@ class IterableTest extends FunSuite {
   val x26: Iterator[Int] = x1.toIterator
   val x27: Iterator[Int] = x1.toIterator
   val x28: Iterator[Int] = x1.toIterator
+  val x29: Iterator[Int] = x1.toIterator
   val x3: Iterable[Int]  = x2.toIterable
 
 //  test("test toIterator")(x1.toIterator)
@@ -52,4 +53,7 @@ class IterableTest extends FunSuite {
   // all TraversableOnce
   test("test iterator sum")(x24.sum)
   test("test iterable sum")(x1.sum)
+
+  test("iterable filter andThen foldLeft")(x1.filter(_  % 3 == 0).foldLeft(0)((a, b) => a + b * 2))
+  test("iterator filter andThen foldLeft")(x29.filter(_ % 3 == 0).foldLeft(0)((a, b) => a + b * 2))
 }
