@@ -11,6 +11,8 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val util = (project in file("modules/util")).settings(commonSetting)
 
+lazy val code = (project in file("modules/code")).settings(commonSetting)
+
 lazy val concurrent = (project in file("modules/concurrent")).settings(commonSetting)
 
-lazy val root = (project in file(".")).aggregate(util, concurrent).dependsOn(util, concurrent)
+lazy val root = (project in file(".")).aggregate(util, concurrent, code).dependsOn(util, concurrent, code)
